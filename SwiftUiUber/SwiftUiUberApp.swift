@@ -10,11 +10,12 @@ import SwiftUI
 @main
 struct SwiftUiUberApp: App {
     let persistenceController = PersistenceController.shared
+    @StateObject var locationViewModel = LocationSearchViewModel()
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            HomeView()
+                .environmentObject(locationViewModel)
         }
     }
 }
